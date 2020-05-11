@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import { NavLink } from "react-router-dom";
 
 type Props = {};
 
@@ -14,22 +15,30 @@ const useClasses = makeStyles((theme: Theme) => createStyles({
   },
   logo: {
     display: 'flex',
-    height: '100%'
+    width: 60
+  },
+  name: {
+    textDecoration: 'none',
+    color: theme.palette.common.white
   }
 }));
 
 const Header: FC<Props> = () => {
-  const {root, title, logo} = useClasses();
+  const {root, title, logo, name} = useClasses();
 
   return <AppBar className={root}>
     <Toolbar>
       <div className={title}>
         <Typography variant="h6">
-          ЧНУ кампус
+          <NavLink to="/" className={name}>
+            ЧНУ кампус
+          </NavLink>
         </Typography>
       </div>
-      <div className={logo}>
-        <img src="/logo-cnu-small.png" alt=""/>
+      <div>
+        <NavLink to='/'>
+          <img className={logo} src="/images/logo.png" alt=""/>
+        </NavLink>
       </div>
     </Toolbar>
   </AppBar>

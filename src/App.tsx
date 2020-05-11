@@ -13,8 +13,8 @@ function App() {
   return (
     <MuiThemeProvider theme={theme}>
       <div className="App">
-        <Header/>
         <BrowserRouter>
+          <Header/>
           <Switch>
             {campusRoutes.map((route, index) => {
               return <Route key={`campus-${route.path}`} {...route} />
