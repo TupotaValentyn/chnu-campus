@@ -1,21 +1,40 @@
 import React from 'react';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './App.css';
-import Overview from "./components/pages/Overview/Overview";
+import campusRoutes from "./components/routing/capmpusRoutes";
+import { campusItemsRoutesWithProps } from "./components/routing/campusItemsRoutes";
+import CampusItem from "./components/common/CampusItem/CampusItem";
+import Header from "./components/common/Header";
+import { MuiThemeProvider } from "@material-ui/core";
+import theme from "./theme/theme";
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" >
-            <Overview />
-          </Route>
-        </Switch>
+    <MuiThemeProvider theme={theme}>
+      <div className="App">
+        <Header/>
+        <BrowserRouter>
+          <Switch>
+            {campusRoutes.map((route, index) => {
+              return <Route key={`campus-${route.path}`} {...route} />
+            })}
 
-      </BrowserRouter>
-    </div>
+            {campusItemsRoutesWithProps.map((route: any, index: any) => {
+              return <Route key={`campus-item-${route.path}`} render={(props) => {
+                const routeMatchProps = campusItemsRoutesWithProps
+                  .find((matchRoute: any) => matchRoute.path === props.location.pathname);
+                const routeProps = routeMatchProps || route;
+                return <CampusItem {...routeProps.props}/>
+              }
+              }/>
+            })}
+          </Switch>
+
+        </BrowserRouter>
+      </div>
+    </MuiThemeProvider>
+
   );
 }
 

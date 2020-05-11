@@ -6,7 +6,8 @@ type Props = {};
 
 const useClasses = makeStyles((theme: Theme) => createStyles({
   root: {
-    flexGrow: 1,
+    position: 'sticky',
+    top: 0
   },
   title: {
     flexGrow: 1,
@@ -18,9 +19,9 @@ const useClasses = makeStyles((theme: Theme) => createStyles({
 }));
 
 const Header: FC<Props> = () => {
-  const {title, logo} = useClasses();
+  const {root, title, logo} = useClasses();
 
-  return <AppBar>
+  return <AppBar className={root}>
     <Toolbar>
       <div className={title}>
         <Typography variant="h6">

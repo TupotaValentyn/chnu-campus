@@ -29,7 +29,6 @@ const Overview: FC<Props> = () => {
 
   return (
     <div className={overviewWrapper}>
-      <Header/>
       <div className={container}>
         <img src="/resources/campus-main.jpg" className={campusImg} alt="Campus"/>
         <CampusList/>
