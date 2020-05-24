@@ -29,7 +29,7 @@ const useClasses = makeStyles((theme: Theme) => {
   }
 })
 
-const ItemLink: FC<RouteData> = ({imageSrc, info, address, title, subtitle, path}) => {
+const ItemLink: FC<RouteData> = ({imageSrc, info, address, title, subtitle, path, location}) => {
   const {wrapper, contentBox, imageBox, imageClass} = useClasses();
 
   return <Card>
@@ -40,6 +40,9 @@ const ItemLink: FC<RouteData> = ({imageSrc, info, address, title, subtitle, path
         </Typography>
         <Typography>
           {subtitle}
+        </Typography>
+        <Typography>
+          {location || ''}
         </Typography>
         <Typography variant='caption'>
           Читати ...

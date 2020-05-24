@@ -89,9 +89,10 @@ type Props = {
   address: string;
   phone?: string;
   info?: string;
+  location?: string;
 };
 
-const CampusItem: FC<Props> = ({imageSrc, address, subtitle, title, phone, info}) => {
+const CampusItem: FC<Props> = ({imageSrc, address, subtitle, title, phone, info, location}) => {
   const {wrapper, imageBox, imageContentBox, titleClass, subtitleClass, contentWrapperImage, contentWrapper, infoContentBox, contentImageCaption, imageContent} = useClasses({imageSrc});
 
   return (
