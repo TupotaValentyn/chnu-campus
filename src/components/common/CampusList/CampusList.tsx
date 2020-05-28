@@ -1,41 +1,31 @@
 import React, { FC } from "react";
 import { makeStyles, Theme } from "@material-ui/core/styles";
+import data from '../../../data/data';
+import ItemLink from "../ItemLink/ItemLink";
 
 type Props = {};
 
 const useClasses = makeStyles((theme: Theme) => {
   return {
     campusList: {
+      width: '100%',
+      boxSizing: 'border-box',
+      justifyContent: 'center',
       display: 'grid',
-      grid: 'repeat(5, 1fr)/ 1fr 1fr'
-    },
-    listItem: {
-      display: 'flex'
-    },
-    firstColumn: {
-      gridColumn: 1
-    },
-    secondColumn: {
-      gridColumn: 2
+      grid: 'repeat(5, 1fr)/ repeat(auto-fill, minmax(350px, 400px))',
+      gridGap: '8px 16px'
     }
   }
 });
 
-const CampusList:FC<Props> = () => {
+const CampusList: FC<Props> = () => {
 
-  const {campusList, firstColumn, secondColumn, listItem} = useClasses();
+  const {campusList} = useClasses();
 
   return <ul className={campusList}>
-    <li className={`${firstColumn} ${listItem}`}>list-item1</li>
-    <li className={`${firstColumn} ${listItem}`}>list-item2</li>
-    <li className={`${firstColumn} ${listItem}`}>list-item3</li>
-    <li className={`${firstColumn} ${listItem}`}>list-item4</li>
-    <li className={`${firstColumn} ${listItem}`}>list-item5</li>
-    <li className={`${secondColumn} ${listItem}`}>list-item6</li>
-    <li className={`${secondColumn} ${listItem}`}>list-item7</li>
-    <li className={`${secondColumn} ${listItem}`}>list-item8</li>
-    <li className={`${secondColumn} ${listItem}`}>list-item9</li>
-    <li className={`${secondColumn} ${listItem}`}>list-item10</li>
+    {data.map((route) => {
+      return <ItemLink {...route}/>
+    })}
   </ul>
 };
 
