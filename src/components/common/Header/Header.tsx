@@ -1,7 +1,7 @@
-import React, { FC } from "react";
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import { NavLink } from "react-router-dom";
+import React, { FC } from 'react';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { NavLink } from 'react-router-dom';
 
 type Props = {};
 
@@ -24,24 +24,28 @@ const useClasses = makeStyles((theme: Theme) => createStyles({
 }));
 
 const Header: FC<Props> = () => {
-  const {root, title, logo, name} = useClasses();
+    const { root, title, logo, name } = useClasses();
 
-  return <AppBar className={root}>
-    <Toolbar>
-      <div className={title}>
-        <Typography variant="h6">
-          <NavLink to="/" className={name}>
-            ЧНУ кампус
+    return <AppBar className={root}>
+      <Toolbar>
+        <div className={title}>
+          <Typography variant="h6">
+            <NavLink to="/" className={name}>
+              ЧНУ кампус
+            </NavLink>
+          </Typography>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <NavLink to='/map' style={{ margin: '0 16px', textDecoration: 'none', color: 'black' }}>
+            Карта
           </NavLink>
-        </Typography>
-      </div>
-      <div>
-        <NavLink to='/'>
-          <img className={logo} src="/images/logo.png" alt=""/>
-        </NavLink>
-      </div>
-    </Toolbar>
-  </AppBar>
-};
+          <NavLink to='/'>
+            <img className={logo} src='/images/logo.png' alt=''/>
+          </NavLink>
+        </div>
+      </Toolbar>
+    </AppBar>
+  }
+;
 
 export default Header;
